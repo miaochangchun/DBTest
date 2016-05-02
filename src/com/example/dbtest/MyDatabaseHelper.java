@@ -13,7 +13,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
 			"author text," +
 			"price real," +
 			"pages integer," +
-			"name text);" ;
+			"name text," +
+			"category_id integer);" ;
 	public static final String CREATE_CATEGORY = "create table Category(" +
 			"id integer primary key autoincrement," +
 			"category_name text," +
@@ -37,6 +38,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
 		switch (oldVersion) {
 		case 1:
 			dbDatabase.execSQL(CREATE_CATEGORY);
+		case 2:
+			dbDatabase.execSQL("alter table Book add column category_id integer");
 		default:
 		}
 	}
